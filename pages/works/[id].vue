@@ -1,30 +1,46 @@
 <template>
-  <div>
-    <h1>Nuxt3 Jamstack Blogs</h1>
-    <img :src="data.main_image?.url" :width="data.main_image?.width" :height="data.main_image?.height" alt="" />
+  <div class="wrapper mx-auto max-w-[960px] py-20">
+    <p class="mb-8 block h-full max-h-[70vh] w-full">
+      <img
+        :src="data.main_image?.url"
+        :width="500"
+        :height="800"
+        class="mx-auto h-full object-contain"
+      />
+    </p>
     <div>
-      <ul>
+      <ul class="mb-12 flex items-center justify-center gap-4">
         <li v-for="category in data.categories" :key="category">
-          {{ category }}
+          <NuxtLink
+            :to="`/works/category/${category.id}`"
+            class="flex h-10 w-fit items-center justify-center rounded-full border border-black bg-white px-4 text-sm shadow-sm transition-all duration-200 hover:border-green-500 hover:bg-green-500 hover:text-[white]"
+          >
+            # {{ category.name }}
+          </NuxtLink>
         </li>
       </ul>
-      <div>
-        {{ data.description }}
-      </div>
-      <div>
-        {{ data.date }}
+      <div v-if="data.description">
+        <div
+          class="flex w-full flex-col gap-2 rounded-lg border border-green-500 p-4"
+        >
+          <div class="flex items-center gap-2">
+            <p class="text-lg text-green-500">⚫︎</p>
+            <p class="block text-sm font-bold">Comment</p>
+          </div>
+          <p>{{ data.description }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Work } from "~/types/work";
+import type { Work } from '~/types/work'
 
-const { params } = useRoute();
+const { params } = useRoute()
 
 const { data } = await useMicroCMSGetListDetail<Work>({
-  endpoint: "works",
+  endpoint: 'works',
   contentId: Array.isArray(params.id) ? params.id[0] : params.id,
-});
+})
 </script>
