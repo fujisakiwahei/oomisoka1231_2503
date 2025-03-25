@@ -22,8 +22,7 @@
 <script setup lang="ts">
 import type { Work } from '~/types/work'
 
-const { $microcms } = useNuxtApp()
-const { data } = await useAsyncData('works', () =>
-  $microcms.get({ endpoint: 'works' }),
-)
+const { data } = await useMicroCMSGetList<Work>({
+  endpoint: 'works',
+})
 </script>
