@@ -58,14 +58,14 @@ const { data: categories } = await useFetch<MicroCMSResponse>(
   'https://oomisoka1231.microcms.io/api/v1/categories',
   {
     headers: {
-      'X-MICROCMS-API-KEY': 'zPyn595JAwrme573Ns5yXrGb0fIrlhOJxLro',
+      'X-MICROCMS-API-KEY': config.public.microCMS.apiKey,
     },
   },
 )
 
 const route = useRoute()
 
-// トップページかどうかをチェックv
+// トップページかどうかをチェック
 const isTopPage = computed(() => {
   return route.path === '/' || route.path === ''
 })
