@@ -45,7 +45,6 @@
 <script setup lang="ts">
 import { useRoute } from 'nuxt/app'
 import type { Category } from '~/types/category'
-const config = useRuntimeConfig()
 
 interface MicroCMSResponse {
   contents: Category[]

@@ -49,21 +49,30 @@
 </template>
 
 <script setup lang="ts">
+// 作品のリスト
 import type { Work } from '~/types/work'
+
+interface WorksResponse {
+  contents: Work[]
+  totalCount: number
+  offset: number
+  limit: number
+}
 
 const route = useRoute()
 const id = route.params.id
 
-const { data } = await useMicroCMSGetList<Work>({
-  endpoint: 'works',
-  queries: {
-    filters: `categories[contains]${id}`,
-  },
-})
+const { data } = await useFetch<WorksResponse>(`/api/works/category/${id}`)
 
+// 以下はカテゴリのリスト
 import type { Category } from '~/types/category'
 
-const { data: categories } = await useMicroCMSGetList<Category>({
-  endpoint: 'categories',
-})
+interface MicroCMSResponse {
+  contents: Category[]
+  totalCount: number
+  offset: number
+  limit: number
+}
+
+const { data: categories } = await useFetch<MicroCMSResponse>('/api/categories')
 </script>
