@@ -5,13 +5,6 @@ export default defineNuxtConfig({
 
   modules: ['nuxt-microcms-module', '@nuxtjs/tailwindcss'],
 
-  runtimeConfig: {
-    microCMS: {
-      serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-      apiKey: process.env.MICROCMS_API_KEY,
-    },
-  },
-
   microCMS: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY,

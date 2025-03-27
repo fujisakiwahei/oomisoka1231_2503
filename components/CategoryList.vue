@@ -43,11 +43,25 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'nuxt/app'
 import type { Category } from '~/types/category'
+const config = useRuntimeConfig()
 
-const { data: categories } = await useMicroCMSGetList<Category>({
-  endpoint: 'categories',
-})
+interface MicroCMSResponse {
+  contents: Category[]
+  totalCount: number
+  offset: number
+  limit: number
+}
+
+const { data: categories } = await useFetch<MicroCMSResponse>(
+  'https://oomisoka1231.microcms.io/api/v1/categories',
+  {
+    headers: {
+      'X-MICROCMS-API-KEY': config.public.microCMS.apiKey,
+    },
+  },
+)
 
 const route = useRoute()
 

@@ -20,9 +20,25 @@
 </template>
 
 <script setup lang="ts">
+interface MicroCMSResponse {
+  contents: Work[]
+  totalCount: number
+  offset: number
+  limit: number
+}
 import type { Work } from '~/types/work'
 
-const { data } = await useMicroCMSGetList<Work>({
-  endpoint: 'works',
-})
+const config = useRuntimeConfig()
+
+const { data } = await useFetch<MicroCMSResponse>(
+  'https://oomisoka1231.microcms.io/api/v1/works',
+  {
+    headers: {
+      'X-MICROCMS-API-KEY': config.public.microCMS.apiKey,
+    },
+  },
+)
+
+// デバッグ用（確認後は削除してください）
+console.log('API Key:', config.public.microCMS.apiKey)
 </script>
