@@ -54,16 +54,7 @@ interface MicroCMSResponse {
   limit: number
 }
 
-const { data: categories } = await useFetch<MicroCMSResponse>(
-  'https://oomisoka1231.microcms.io/api/v1/categories',
-  {
-    headers: {
-      'X-MICROCMS-API-KEY': config.public.microCMS.apiKey,
-    },
-  },
-)
-
-console.log('apiKey', config.public.microCMS.apiKey)
+const { data: categories } = await useFetch<MicroCMSResponse>('/api/categories')
 
 const route = useRoute()
 

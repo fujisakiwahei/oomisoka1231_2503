@@ -28,17 +28,5 @@ interface MicroCMSResponse {
 }
 import type { Work } from '~/types/work'
 
-const config = useRuntimeConfig()
-
-const { data } = await useFetch<MicroCMSResponse>(
-  'https://oomisoka1231.microcms.io/api/v1/works',
-  {
-    headers: {
-      'X-MICROCMS-API-KEY': config.public.microCMS.apiKey,
-    },
-  },
-)
-
-// デバッグ用（確認後は削除してください）
-console.log('API Key:', config.public.microCMS.apiKey)
+const { data } = await useFetch('/api/works')
 </script>
