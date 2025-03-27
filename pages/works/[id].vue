@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper mx-auto max-w-[960px] py-20">
+  <div v-if="data" :key="data.id" class="wrapper mx-auto max-w-[960px] py-20">
     <p class="mb-8 block h-full max-h-[70vh] w-full">
       <img
         :src="data.main_image?.url"
@@ -8,9 +8,9 @@
         class="mx-auto h-full object-contain"
       />
     </p>
-    <div>
+    <div v-if="data">
       <ul class="mb-12 flex items-center justify-center gap-4">
-        <li v-for="category in data.categories" :key="category">
+        <li v-for="category in data.categories" :key="category.id">
           <NuxtLink
             :to="`/works/category/${category.id}`"
             class="flex h-10 w-fit items-center justify-center rounded-full border border-black bg-white px-4 text-sm shadow-sm transition-all duration-200 hover:border-green-500 hover:bg-green-500 hover:text-[white]"
@@ -36,11 +36,15 @@
 
 <script setup lang="ts">
 import type { Work } from '~/types/work'
+import type { Category } from '~/types/category'
 
-const { params } = useRoute()
+// Workの型を拡張して、categoriesをCategory[]型に
+interface WorkDetail extends Omit<Work, 'categories'> {
+  categories: Category[]
+}
 
-const { data } = await useMicroCMSGetListDetail<Work>({
-  endpoint: 'works',
-  contentId: Array.isArray(params.id) ? params.id[0] : params.id,
-})
+const route = useRoute()
+const id = route.params.id
+
+const { data } = await useFetch<WorkDetail>(`/api/works/${id}`)
 </script>
