@@ -63,6 +63,8 @@ const { data: categories } = await useFetch<MicroCMSResponse>(
   },
 )
 
+console.log('apiKey', config.public.microCMS.apiKey)
+
 const route = useRoute()
 
 // トップページかどうかをチェック
