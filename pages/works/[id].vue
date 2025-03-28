@@ -1,6 +1,10 @@
 <template>
-  <div v-if="data" :key="data.id" class="wrapper mx-auto max-w-[960px] py-20">
-    <p class="mb-8 block h-full max-h-[70vh] w-full">
+  <div
+    v-if="data"
+    :key="data.id"
+    class="wrapper mx-auto max-w-[960px] px-5 py-10 md:py-20"
+  >
+    <p v-appearance-animation class="mb-8 block h-full w-full md:max-h-[70vh]">
       <img
         :src="data.main_image?.url"
         :width="500"
@@ -9,7 +13,7 @@
       />
     </p>
     <div v-if="data">
-      <ul class="mb-12 flex items-center justify-center gap-4">
+      <ul class="my-12 flex flex-wrap items-center justify-center gap-4">
         <li v-for="category in data.categories" :key="category.id">
           <NuxtLink
             :to="`/works/category/${category.id}`"
@@ -21,7 +25,7 @@
       </ul>
       <div v-if="data.description">
         <div
-          class="flex w-full flex-col gap-2 rounded-lg border border-green-500 p-4"
+          class="mb-12 flex w-full flex-col gap-2 rounded-lg border border-green-500 p-4"
         >
           <div class="flex items-center gap-2">
             <p class="text-lg text-green-500">⚫︎</p>
@@ -30,6 +34,12 @@
           <p>{{ data.description }}</p>
         </div>
       </div>
+      <NuxtLink
+        to="/works"
+        class="mx-auto flex h-16 w-full items-center justify-center rounded-full border border-[#333] bg-[#333] px-4 text-white shadow-md transition-all duration-200 hover:bg-white hover:text-[#333] lg:w-96"
+      >
+        ギャラリーに戻る</NuxtLink
+      >
     </div>
   </div>
 </template>

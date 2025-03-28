@@ -2,10 +2,14 @@
   <div class="wrapper">
     <section class="mx-auto max-w-[960px] py-12">
       <SecTitle japanese="私について" english="About me" />
-      <div class="flex items-center justify-between gap-20">
+      <div
+        class="flex flex-col-reverse items-center justify-between gap-8 md:flex-row md:gap-20"
+      >
         <div class="flex flex-col gap-4">
-          <p class="text-2xl font-bold text-green-500">oomisoka1231</p>
-          <p class="text-sm">
+          <p v-appearance-animation class="text-2xl font-bold text-green-500">
+            oomisoka1231
+          </p>
+          <p v-appearance-animation class="text-sm">
             oomisoka1231です。<br />
             私のイラストレーションは、「こんな子になりたい」と思わせるような女の子を、<br />
             ファッション、表情、仕草を通じて繊細に描き出すことを得意としています。<br />
@@ -29,10 +33,14 @@
         </figure>
       </div>
     </section>
-    <section class="mx-auto max-w-[960px] py-12">
-      <SecTitle japanese="ギャラリー" english="Gallery" />
+    <section class="mx-auto max-w-[960px] pb-4 md:py-12">
+      <SecTitle
+        v-appearance-animation
+        japanese="ギャラリー"
+        english="Gallery"
+      />
       <WorkList />
-      <CategoryList class="mt-12" />
+      <CategoryList v-appearance-animation class="mt-12" />
     </section>
   </div>
 </template>

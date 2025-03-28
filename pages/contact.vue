@@ -50,17 +50,21 @@ defineRule('email', (value: string) => {
 </script>
 
 <template>
-  <div class="wrapper mx-auto max-w-[960px] py-20">
+  <div class="wrapper mx-auto max-w-[960px] px-5 py-10 md:py-20">
     <SecTitle japanese="お問い合わせ" english="Contact" />
-    <p class="-mt-10 mb-6 text-center">
-      お問い合わせを頂きましたら、通常3日以内にご返信いたします。<br />
-      些細なことでも、お気軽にお問い合わせお待ちしております！
+    <p class="mb-10 text-center md:-mt-4">
+      お問い合わせを頂きましたら、<br
+        class="md:hidden"
+      />通常3日以内にご返信いたします。<br />
+      些細なことでもお気軽に<br
+        class="md:hidden"
+      />お問い合わせお待ちしております！
     </p>
     <Form
       action="https://ssgform.com/s/B0Clp8lPbXye"
       method="POST"
       v-slot="{ errors }"
-      class="rounded-lg border border-green-500 p-16 shadow-lg"
+      class="rounded-lg border border-green-500 p-5 shadow-lg md:p-16"
     >
       <div class="formItem">
         <div class="formContents">
@@ -95,8 +99,8 @@ defineRule('email', (value: string) => {
           <label class="formItemLabel required" for="inquiry"
             >お問い合わせ内容</label
           >
-          <div class="radio-group flex gap-4">
-            <label class="flex items-center gap-2">
+          <div class="radio-group flex flex-wrap gap-4">
+            <label class="flex items-center">
               <Field
                 rules="required"
                 type="radio"
@@ -105,7 +109,7 @@ defineRule('email', (value: string) => {
               />
               制作のご相談
             </label>
-            <label class="flex items-center gap-2">
+            <label class="flex items-center">
               <Field
                 rules="required"
                 type="radio"
@@ -114,7 +118,7 @@ defineRule('email', (value: string) => {
               />
               ご質問
             </label>
-            <label class="flex items-center gap-2">
+            <label class="flex items-center">
               <Field
                 rules="required"
                 type="radio"
@@ -130,7 +134,7 @@ defineRule('email', (value: string) => {
       <div class="formItem">
         <div class="formContents">
           <label class="formItemLabel required" for="inquiryDetail"
-            >お問い合わせ内容（詳細）</label
+            >お問い合わせ内容(詳細)</label
           >
           <Field
             rules="required"
@@ -144,7 +148,7 @@ defineRule('email', (value: string) => {
       <div class="formItem flex justify-center">
         <button
           type="submit"
-          class="mx-auto h-14 w-40 items-center justify-center rounded-md border border-[#333] bg-white shadow-md transition-all duration-300 hover:border-green-500 hover:bg-green-500 hover:text-white hover:shadow-lg"
+          class="mx-auto h-14 w-40 items-center justify-center rounded-md border-[#333] bg-green-500 text-white shadow-md transition-all duration-300 hover:border-green-500 hover:bg-green-500 hover:text-white hover:shadow-lg md:border md:bg-white md:text-[#333]"
         >
           送信する
         </button>
@@ -155,10 +159,6 @@ defineRule('email', (value: string) => {
 
 <style scoped lang="scss">
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
   form {
     display: flex;
     flex-direction: column;
@@ -167,6 +167,11 @@ defineRule('email', (value: string) => {
       padding-bottom: 40px;
       margin-bottom: 40px;
       border-bottom: 1px solid #c5f2d6;
+
+      @media (max-width: 768px) {
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
 
       &:last-child,
       &:nth-child(5) {
@@ -179,14 +184,39 @@ defineRule('email', (value: string) => {
         align-items: center;
         gap: 32px;
 
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 16px;
+        }
+
         label {
           flex-shrink: 0;
         }
 
         .formItemLabel {
-          font-size: 16px;
+          font-size: 14px;
+          font-weight: 600;
           width: 220px;
           display: flex;
+          align-items: center;
+
+          &::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            margin-right: 16px;
+          }
+
+          @media (max-width: 768px) {
+            width: 100%;
+
+            &::before {
+              margin-right: 8px;
+            }
+          }
         }
 
         .required {
@@ -221,6 +251,11 @@ defineRule('email', (value: string) => {
           gap: 24px;
           flex-wrap: wrap;
 
+          @media (max-width: 768px) {
+            column-gap: 16px;
+            row-gap: 8px;
+          }
+
           input {
             width: 16px;
             height: 16px;
@@ -232,7 +267,7 @@ defineRule('email', (value: string) => {
             width: fit-content;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 8px;
           }
         }
       }
@@ -246,5 +281,9 @@ defineRule('email', (value: string) => {
   font-size: 0.875rem;
   margin-top: 16px;
   margin-left: 252px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 </style>

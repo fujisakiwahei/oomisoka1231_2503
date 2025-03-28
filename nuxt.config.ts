@@ -30,5 +30,10 @@ export default defineNuxtConfig({
     },
   },
 
+  plugins: [
+    { src: '~/plugins/gsap.client.ts', mode: 'client' }, // クライアントサイドでのみ実行
+    { src: '~/plugins/directives.ts', mode: 'client' },
+  ],
+
   css: ['@/assets/css/main.css'],
 })

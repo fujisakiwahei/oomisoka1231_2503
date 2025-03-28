@@ -1,5 +1,8 @@
 <template>
-  <ul v-if="isTopPage" class="mb-8 flex items-center justify-center gap-4">
+  <ul
+    v-if="isTopPage"
+    class="mb-8 flex flex-wrap items-center justify-center gap-3 md:gap-4"
+  >
     <li>
       <NuxtLink
         to="/works"
@@ -8,7 +11,10 @@
       >
     </li>
   </ul>
-  <ul v-else class="mb-8 flex items-center justify-center gap-4">
+  <ul
+    v-else
+    class="mb-8 flex flex-wrap items-center justify-center gap-3 md:gap-4"
+  >
     <li>
       <NuxtLink
         to="/works"

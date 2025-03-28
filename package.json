@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vee-validate/rules": "^4.15.0",
+    "gsap": "^3.12.7",
     "microcms-js-sdk": "^3.2.0",
     "nuxt": "^3.16.1",
     "nuxt-microcms-module": "^3.0.2",

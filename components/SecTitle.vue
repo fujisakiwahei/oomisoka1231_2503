@@ -1,5 +1,7 @@
 <template>
-  <div class="relative mb-12 flex flex-col items-center justify-center gap-2">
+  <div
+    class="relative mb-6 flex flex-col items-center justify-center gap-2 lg:mb-12"
+  >
     <h2 class="text-center text-sm font-bold leading-none text-green-500">
       {{ japanese }}
     </h2>
