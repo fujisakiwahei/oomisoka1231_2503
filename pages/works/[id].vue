@@ -4,12 +4,19 @@
     :key="data.id"
     class="wrapper mx-auto max-w-[960px] px-5 py-10 md:py-20"
   >
-    <p v-appearance-animation class="mb-8 block h-full w-full md:max-h-[70vh]">
-      <img
+    <p
+      v-appearance-animation
+      class="relative mb-8 block aspect-[303/414] w-full"
+    >
+      <div
+        v-if="!data?.main_image"
+        class="absolute inset-0 animate-pulse rounded-lg bg-gray-200"
+      ></div>
+      <NuxtImg
         :src="data.main_image?.url"
         :width="500"
         :height="800"
-        class="mx-auto h-full object-contain"
+        class="absolute inset-0 h-full w-full object-contain"
       />
     </p>
     <div v-if="data">

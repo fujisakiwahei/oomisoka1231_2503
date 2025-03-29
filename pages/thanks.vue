@@ -7,7 +7,7 @@
         お問い合わせ<br class="md:hidden" />ありがとうございました！
       </p>
       <p class="mx-auto w-full md:w-96">
-        <img
+        <NuxtImg
           src="@/assets/images/thanks/thanks_illust.webp"
           width="384"
           height="600"

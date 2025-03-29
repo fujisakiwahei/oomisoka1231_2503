@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@nuxt/image": "^1.10.0",
     "@vee-validate/rules": "^4.15.0",
     "gsap": "^3.12.7",
     "microcms-js-sdk": "^3.2.0",

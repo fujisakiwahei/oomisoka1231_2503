@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer v-appearance-animation>
     <div class="bg-gray-500 p-10 py-10 text-center text-sm text-white md:py-20">
       <NuxtLink
         to="/privacy"

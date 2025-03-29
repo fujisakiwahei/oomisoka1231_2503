@@ -1,4 +1,5 @@
 <template>
+  <LoadingScreen />
   <ClientOnly>
     <Header />
     <NuxtPage class="mx-5 mt-20" />
@@ -12,6 +13,7 @@ import Footer from '@/components/Footer.vue'
 </script>
 
 <style lang="scss">
+// 出現アニメーション
 .appearanceBefore {
   opacity: 0;
   transform: translateY(50px);
@@ -21,5 +23,16 @@ import Footer from '@/components/Footer.vue'
 .appearanceAfter {
   opacity: 1;
   transform: translateY(0);
+}
+
+// ページ遷移アニメーション
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+  filter: blur(1rem);
 }
 </style>

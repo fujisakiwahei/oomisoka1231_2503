@@ -39,7 +39,7 @@
         >
           <NuxtLink :to="`/works/${work.id}`" class="p-4">
             <p class="aspect-[303/414] w-full">
-              <img
+              <NuxtImg
                 :src="work.main_image?.url"
                 :width="work.main_image?.width"
                 :height="work.main_image?.height"
