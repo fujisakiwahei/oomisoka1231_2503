@@ -13,6 +13,10 @@ import Footer from '@/components/Footer.vue'
 </script>
 
 <style lang="scss">
+/* 最小の高さを確保してレイアウトシフトを防ぐ */
+.page-wrapper {
+  min-height: calc(100vh - 80px); /* フッターの高さを引いた値 */
+}
 // 出現アニメーション
 .appearanceBefore {
   opacity: 0;

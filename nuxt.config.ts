@@ -36,6 +36,8 @@ export default defineNuxtConfig({
     pageTransition: {
       name: 'page',
       mode: 'out-in',
+      appear: true, // 初期表示時もアニメーション適用
+      duration: 300, // トランジション時間を短く
     },
   },
 

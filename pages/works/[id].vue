@@ -1,21 +1,15 @@
 <template>
   <div
-    v-if="data"
-    :key="data.id"
-    class="wrapper mx-auto max-w-[960px] px-5 py-10 md:py-20"
+    class="wrapper nuxt-page-container mx-auto min-h-screen max-w-[960px] px-5 py-10 md:py-20"
   >
     <p
       v-appearance-animation
-      class="relative mb-8 block aspect-[303/414] w-full"
+      class="relative mx-auto mb-8 block aspect-[303/414] w-full max-w-[500px]"
     >
-      <div
-        v-if="!data?.main_image"
-        class="absolute inset-0 animate-pulse rounded-lg bg-gray-200"
-      ></div>
-      <NuxtImg
-        :src="data.main_image?.url"
-        :width="500"
-        :height="800"
+      <img
+        :src="data?.main_image?.url"
+        width="500"
+        height="800"
         class="absolute inset-0 h-full w-full object-contain"
       />
     </p>
@@ -30,7 +24,7 @@
           </NuxtLink>
         </li>
       </ul>
-      <div v-if="data.description">
+      <div v-if="data.description" v-appearance-animation-bottom>
         <div
           class="mb-12 flex w-full flex-col gap-2 rounded-lg border border-green-500 p-4"
         >
