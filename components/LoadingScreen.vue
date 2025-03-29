@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isLoading"
+    v-if="isLoading && !hasVisited"
     class="fixed inset-0 z-50 flex items-center justify-center bg-white"
   >
     <div class="flex flex-col items-center">
@@ -16,10 +16,25 @@
 <script setup lang="ts">
 const nuxtApp = useNuxtApp()
 const isLoading = ref(false)
+const hasVisited = ref(false)
+
+// 初期化時にローカルストレージをチェック
+onMounted(() => {
+  const visited = localStorage.getItem('hasVisitedSite')
+  hasVisited.value = !!visited
+
+  if (!visited) {
+    // 初回訪問時はローカルストレージに記録
+    localStorage.setItem('hasVisitedSite', 'true')
+  }
+})
 
 // ページ遷移開始時
 nuxtApp.hook('page:start', () => {
-  isLoading.value = true
+  // 初回訪問時のみローディングを表示
+  if (!hasVisited.value) {
+    isLoading.value = true
+  }
 })
 
 // ページ遷移完了時
